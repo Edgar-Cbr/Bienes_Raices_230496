@@ -1,4 +1,10 @@
-const express= require(`express`); //declaración de objeto que permite entrar al protocolo http y leer páginas
+//ECMa Script 6
+//Comman16
+
+
+import express from 'express';
+
+//const express= require(`express`); //declaración de objeto que permite entrar al protocolo http y leer páginas
 //importar la libreria para crear un servidos web
 
 //Instanciar nuestra aplicación web
