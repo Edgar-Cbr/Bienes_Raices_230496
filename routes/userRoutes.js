@@ -1,5 +1,5 @@
-import express from 'express';
 import express, { response } from 'express';
+import { formularioLogin, formularioRegister ,formularioPasswordRecovery } from '../controllers/userController.js';
 
 
 const router = express.Router()
@@ -51,6 +51,16 @@ router.delete("/deleteUser/:email", function(request, response){
 })
 
 
+/*router.get("/login", function(request, response){
+    response.render("auth/login", {
+        autenticado:false
+
+    })
+});*/
+
+router.get("/login", formularioLogin)
+router.get("/createAccount", formularioRegister)
+router.get("/passwordRecovery", formularioPasswordRecovery)
 
 
 export default router;
