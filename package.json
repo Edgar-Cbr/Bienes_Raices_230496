@@ -1,0 +1,38 @@
+{
+  "name": "mx.edu.utxj.ti.awos.bienes-raices",
+  "version": "1.0.0",
+  "description": "Proyecto de clase para la Unidad 2, de la asignatura AWOSutilizando Node.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "saluda": "node saluda.js",
+    "server": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Edgar-Cbr/Bienes_Raices_230496.git"
+  },
+  "keywords": [
+    "MVC",
+    "Express",
+    "Sequelize",
+    "MySQL",
+    "Tailwind",
+    "Nodemon",
+    "NodeJS",
+    "Mailtrap",
+    "JWT"
+  ],
+  "author": "Edgar Cabrera Velazquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Edgar-Cbr/Bienes_Raices_230496/issues"
+  },
+  "homepage": "https://github.com/Edgar-Cbr/Bienes_Raices_230496#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
