@@ -1,5 +1,5 @@
 import express, { response } from 'express';
-import { formularioLogin, formularioRegister ,formularioPasswordRecovery } from '../controllers/userController.js';
+import { formularioLogin, formularioRegister, registrar, formularioPasswordRecovery } from '../controllers/userController.js';
 
 
 const router = express.Router()
@@ -19,6 +19,7 @@ router.post("/newUser/:name/:email/:password", function(req,res){
         asociado al correo electronico: ${req.params.email} con la contraseña: ${req.params.password}`)
 })
 
+router.post('/resgistro', registrar)
 
 //PUT - se utiliza para la actualización total de información del cliente el servidor
 router.put("/replaceUserByEmail/:name/:email/:password", function(a,b){
@@ -60,6 +61,7 @@ router.delete("/deleteUser/:email", function(request, response){
 
 router.get("/login", formularioLogin)
 router.get("/createAccount", formularioRegister)
+
 router.get("/passwordRecovery", formularioPasswordRecovery)
 
 
