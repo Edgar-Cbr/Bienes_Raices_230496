@@ -48,7 +48,7 @@ const registerEmail = async (data) => {
                             <strong>Edgar Cabrera Velazquez</strong>
                         </p>
                          <div style="margin-bottom: 15px;">
-                            <img src="https://lh3.googleusercontent.com/pw/AP1GczOqyY_KoRU97oqOrExRcinNI02hEyNxTdEwMA2pK5v4ByWLP6_fn7gGIKYpznPMssC9ki95Gz_V6kiudDpLMJHHtrevK6ZhignoLDgguI3zgGNleBR3gtzxqik0xotsBZMESPUkFO3VvhztfCUSm7X_=w214-h98-s-no-gm?authuser=0" alt="Firma" style="max-width: 150px; border-radius: 5px;">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNrm_cnN8j0NHCIsnCCYTVYF2QzvP9v7f8I8bLlA4ggQG1K02q0ZuYUu_iW2r7IYXm-CCasrLyUPNoixAKL-uvMPbhGoYeu51VOyna3JwRJ5-hI3YSHTRPZXE4OG4suDB9MSr4DKT_RfZlOGstkjRam=w278-h67-s-no-gm?authuser=0" alt="Firma" style="max-width: 150px; border-radius: 5px;">
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ const passwordRecoveryEmail = async (data) => {
                             <strong>Edgar Cabrera Velazquez</strong>
                         </p>
                          <div style="margin-bottom: 15px;">
-                            <img src="" alt="Firma" style="max-width: 150px; border-radius: 5px;">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNrm_cnN8j0NHCIsnCCYTVYF2QzvP9v7f8I8bLlA4ggQG1K02q0ZuYUu_iW2r7IYXm-CCasrLyUPNoixAKL-uvMPbhGoYeu51VOyna3JwRJ5-hI3YSHTRPZXE4OG4suDB9MSr4DKT_RfZlOGstkjRam=w278-h67-s-no-gm?authuser=0" alt="Firma" style="max-width: 150px; border-radius: 5px;">
                         </div>
                     </div>
                 </div>
