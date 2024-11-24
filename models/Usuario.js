@@ -11,6 +11,10 @@ const User=db.define('tbb_users',{
         allownull:false,
         unique:true
     },
+    date:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     password:{
         type:DataTypes.STRING,
         allownull:false

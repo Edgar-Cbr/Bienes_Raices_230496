@@ -75,6 +75,18 @@ const resetPassword = async (req, res) => {
 const createNewUser = async (req, res) => {
     // Validación de los campos que se reciben del formulario
     await check('name').notEmpty().withMessage('El nombre no puede ir vacío').run(req);
+    await check('fecha_usuario').notEmpty().withMessage('La fecha no puede estar vacía').custom((value) => {
+            const birthDate = new Date(value.split('/').reverse().join('-'));
+            const ageDiff = Date.now() - birthDate.getTime();
+            const ageDate = new Date(ageDiff);
+            const age = Math.abs(ageDate.getUTCFullYear() - 1970); // Calcular la edad
+            if (age < 18) {
+                throw new Error('Debes tener al menos 18 años para registrarte.');
+            }
+            return true;
+        })
+        .withMessage('Fecha inválida o edad insuficiente.')
+        .run(req);
     await check('correo_usuario')
         .notEmpty().withMessage('El correo electrónico es un campo obligatorio')
         .isEmail().withMessage('El correo electrónico no tiene el formato correcto')
@@ -106,7 +118,7 @@ const createNewUser = async (req, res) => {
         console.log(req.body);
     }
 
-    const { name, correo_usuario: email, pass_usuario: password } = req.body;
+    const { name, correo_usuario: email, pass_usuario: password, fecha_usuario:date } = req.body;
 
     // Verificamos que el usuario no existe previamente en la BD
     const existingUser = await User.findOne({ where: { email } });
@@ -125,6 +137,7 @@ const createNewUser = async (req, res) => {
     // Registramos los datos en la BD
     const newUser =await User.create({
         name,
+        date,
         email,
         password, 
         token:generateId()
