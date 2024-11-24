@@ -44,6 +44,7 @@ router.get("/login",formularioLogin/*Middelware*/)
 router.get("/createAccount",formularioRegister)
 router.post("/createAccount",formularioRegister)
 router.get("/passwordRecovery",formularioPasswordRecovery)
+
 router.post("/passwordRecovery", resetPassword)
 router.get('/confirm/:token',confirm )
 

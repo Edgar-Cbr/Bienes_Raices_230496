@@ -2,50 +2,36 @@
 export default {
   content: ['./views/**/*.pug'],
   theme: {
-    extend: {},
-    colors: {
-      transparent: 'transparent',
-      current: 'currentcolor',
-      'redd': '#D62828',
-      'black': '#000000',
-      'white': '#ffffff',
-      'celadon': '#A8E6A1',
-      'cgr': '#F1FBFA',
-      'emerald': '#50c878',
-      'pigmentgreen': '#4CAF50',
+    extend: {
+      colors: {
+        'naranja': '#F2A359',           // Color base naranja
+        'naranja-100': '#F5B780',       // Tonalidad más clara
+        'naranja-200': '#F09C5C',       // Tonalidad media clara
+        'naranja-300': '#EC8741',       // Tonalidad media
+        'naranja-400': '#E67326',       // Tonalidad más oscura
+        'naranja-500': '#E05F0A',       // Tonalidad aún más oscura
+        'naranja-600': '#D94E00',       // Tonalidad aún más intensa
+        'naranja-700': '#C63D00',       // Muy oscuro
+        'naranja-800': '#B02C00',       // Casi rojo
+        'naranja-900': '#A4031F',       // El tono más oscuro (rojo-anaranjado)
 
-      // Intensidades de celadon
-      'celadon-50':'#C1FFC4',
-      'celadon-100': '#A8E6A1',
-      'celadon-200': '#8BD88B',  
-      'celadon-300': '#78C774',  
-      'celadon-400': '#65B762', 
+        'coral': '#DB9065',             // Color base coral
+        'coral-100': '#E7A884',         // Tonalidad más clara
+        'coral-200': '#E0855A',         // Tonalidad media clara
+        'coral-300': '#D57840',         // Tonalidad media
+        'coral-400': '#CC6A26',         // Tonalidad más oscura
+        'coral-500': '#C35C0B',         // Tonalidad más intensa
+        
+        'rojo': '#A4031F',              // Color base rojo oscuro
+        'rojo-100': '#B8243B',          // Tonalidad más clara
+        'rojo-200': '#9D1D30',          // Tonalidad media clara
+        'rojo-300': '#8B1A27',          // Tonalidad media
+        'rojo-400': '#78161D',          // Tonalidad más oscura
 
-  
-      'emerald-100': '#50c878',
-      'emerald-200': '#4DC66A',  
-      'emerald-300': '#48B45D',  
-      'emerald-400': '#3F9B50', 
-
-
-      'pigmentgreen-100': '#4CAF50',
-      'pigmentgreen-200': '#45A446',  
-      'pigmentgreen-300': '#3F953D',  
+        'negro': '#000000',             // Color negro
+        'blanco': '#FFFFFF'             // Color blanco
+      }
     },
-    backgroundImage: {
-      // Degradado de Celadon a Emerald
-      'celadon-to-emerald': 'linear-gradient(to right, #A8E6A1, #50c878)',
-
-      // Degradado de Emerald a Pigment Green
-      'emerald-to-pigmentgreen': 'linear-gradient(to right, #50c878, #4CAF50)',
-
-      // Degradado de Celadon a Pigment Green
-      'celadon-to-pigmentgreen': 'linear-gradient(to right, #A8E6A1, #4CAF50)',
-
-      // Degradado de tres colores
-      'three-color-gradient': 'linear-gradient(to right, #A8E6A1, #50c878, #4CAF50)',
-
-    }
   },
   plugins: [],
 }

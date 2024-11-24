@@ -1,3 +1,4 @@
+
 import { check, validationResult } from "express-validator";
 import User from "../models/User.js";
 import { generateId } from "../helpers/tokens.js";
@@ -70,12 +71,12 @@ const resetPassword = async (req, res) => {
     })
 
 };
-
-
 const createNewUser = async (req, res) => {
     // Validación de los campos que se reciben del formulario
     await check('name').notEmpty().withMessage('El nombre no puede ir vacío').run(req);
-    await check('fecha_usuario').notEmpty().withMessage('La fecha no puede estar vacía').custom((value) => {
+    await check('fecha_usuario')
+        .notEmpty().withMessage('La fecha no puede estar vacía')
+        .custom((value) => {
             const birthDate = new Date(value.split('/').reverse().join('-'));
             const ageDiff = Date.now() - birthDate.getTime();
             const ageDate = new Date(ageDiff);
@@ -101,61 +102,63 @@ const createNewUser = async (req, res) => {
 
     let resultado = validationResult(req);
 
-    // Verificamos que el resultado esté vacío
     if (!resultado.isEmpty()) {
-        // Errores
+        // Si hay errores, los mostramos en el formulario
         return res.render('auth/register', {
             page: 'Error al intentar crear una cuenta',
             csrfToken: req.csrfToken(),
             errors: resultado.array(),
-            User:{
-                name:req.body.name,
-                email:req.body.correo_usuario
+            User: {
+                name: req.body.name,
+                email: req.body.correo_usuario
             }
         });
     } else {
+        // Si no hay errores, continuamos con la creación de usuario
         console.log('Registrando a un Nuevo Usuario...');
         console.log(req.body);
     }
 
-    const { name, correo_usuario: email, pass_usuario: password, fecha_usuario:date } = req.body;
+    // Extraemos los datos del formulario
+    const { name, correo_usuario: email, pass_usuario: password, fecha_usuario: date } = req.body;
 
-    // Verificamos que el usuario no existe previamente en la BD
+    // Verificamos que el usuario no exista ya en la base de datos
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
         return res.render('auth/register', {
             page: 'Error al intentar crear una cuenta',
             csrfToken: req.csrfToken(),
             errors: [{ msg: 'El usuario ya está registrado' }],
-            User:{
-                name:req.body.name,
-                email:req.body.correo_usuario
+            User: {
+                name: req.body.name,
+                email: req.body.correo_usuario
             }
         });
     }
-    
-    // Registramos los datos en la BD
-    const newUser =await User.create({
+
+    // Registramos el nuevo usuario
+    const newUser = await User.create({
         name,
         date,
         email,
-        password, 
-        token:generateId()
+        password,
+        token: generateId()
     });
-    //Envia un email de confirmacion 
+
+    // Enviar un email de confirmación
     registerEmail({
         name: newUser.name,
         email: newUser.email,
         token: newUser.token
-    }) 
+    });
 
-    
-    //Mostrar mensaje de confirmación 
-    res.render('templates/message',{
-        page:'Cuenta Creada Correctamente',
-        msg:`Hemos Enviado un Email de Confirmación a  ${email}, presione en el enlace`
-    })
+    // Mostrar mensaje de confirmación
+    res.render('templates/message', {
+        page: 'Cuenta Creada Correctamente',
+        msg: `Hemos Enviado un Email de Confirmación a ${email}, presione en el enlace para activarla.`
+    });
 };
+
 //Funcion que comprueba una cuenta 
 const confirm=async (req,res)=>{
 
