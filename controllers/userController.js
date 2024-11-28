@@ -4,6 +4,7 @@ import User from "../models/User.js";
 import { generateId } from "../helpers/tokens.js";
 import {registerEmail,passwordRecoveryEmail} from '../helpers/emails.js'
 import { where } from "sequelize";
+import { request, response } from "express";
 
 const formularioLogin = (req, res) => {
     res.render('auth/login', {
