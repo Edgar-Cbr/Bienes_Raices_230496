@@ -2,7 +2,7 @@ import { check, validationResult } from "express-validator";
 import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 import moment from 'moment';
-import { generateId } from "../helpers/tokens.js";
+import { generateId, generarJWT} from "../helpers/tokens.js";
 import { registerEmail, passwordRecoveryEmail } from '../helpers/emails.js';
 
 // Mostrar formulario de login
