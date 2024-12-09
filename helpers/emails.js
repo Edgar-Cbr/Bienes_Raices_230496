@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+
 const registerEmail = async (data) => {
     const transport = nodemailer.createTransport({
         host: process.env.Email_HOST,
@@ -19,22 +20,22 @@ const registerEmail = async (data) => {
         text: `Hola ${name}, necesitamos que confirmes tu correo para completar el registro en BienesRaices_230496.`,
         html: `
             <header style="font-family: bold; text-align: center; line-height: 0.5;">
-                <h2 style="color: #F2A359;">Bienes Raices</h2>
-                <h3 style="color: #E05F0A;">Activación de cuenta</h3>
+                <h2 style="color: #FFA500;">Bienes Raices</h2>
+                <h3 style="color: #FF7F32;">Activación de cuenta</h3>
             </header>
-            <div style="font-family: bold, sans-serif; text-align: justify; line-height: 1.6; color: #333; background-color: #f9f9f9; padding: 25px; border: 10px solid #F5B780; border-radius: 5px;">
-                <h2 style="color: #D57840;">¡Bienvenido, ${name}!</h2>
-                <div style="padding: 35px; border: dashed #F2A359; border-radius: 30px;">
+            <div style="font-family: bold, sans-serif; text-align: justify; line-height: 1.6; color: #333; background-color: #fff3e0; padding: 25px; border-radius: 5px;">
+                <h2 style="color: #FF7F32;">¡Bienvenido, ${name}!</h2>
+                <div style="padding: 35px; background-color: #fff8e1; border-radius: 30px;">
                     <p style="font-size: 18px;">
                         Gracias por registrarte en <strong>BienesRaices_230499</strong>. Para completar tu registro y empezar a explorar nuestras propiedades, solo necesitas confirmar tu dirección de correo electrónico.
                     </p>
-                    <div style="text-align: center; background: #F5B780; border: 1px solid #000000; padding: 15px;">
-                        <p style="font-size: 20px;">
+                    <div style="text-align: center; background: #FF7F32; padding: 15px;">
+                        <p style="font-size: 20px; color: #fff;">
                             Haz clic en el siguiente botón para activar tu cuenta:
                         </p>
                         <div style="text-align: center; margin: 20px 0;">
                             <a href="${process.env.BACKEND_DOMAIN}:${process.env.BACKEND_PORT ?? 3000}/auth/confirm/${token}" 
-                               style="background-color: #B02C00; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+                               style="background-color: #FF5722; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
                                Activar Cuenta
                             </a>
                         </div>
@@ -59,6 +60,7 @@ const registerEmail = async (data) => {
         `,
     });
 };
+
 const passwordRecoveryEmail = async (data) => {
     const transport = nodemailer.createTransport({
         host: process.env.Email_HOST,
@@ -79,22 +81,22 @@ const passwordRecoveryEmail = async (data) => {
         text: `Hola ${name}, hemos recibido una solicitud para restablecer la contraseña de tu cuenta en BienesRaices_230496.`,
         html: `
             <header style="font-family: bold; text-align: center; line-height: 0.5;">
-                <h2 style="color: #F2A359;">Bienes Raices</h2>
-                <h3 style="color: #E05F0A;">Restablecimiento de contraseña</h3>
+                <h2 style="color: #FFA500;">Bienes Raices</h2>
+                <h3 style="color: #FF7F32;">Restablecimiento de contraseña</h3>
             </header>
-            <div style="font-family: bold, sans-serif; text-align: justify; line-height: 1.6; color: #333; background-color: #f9f9f9; padding: 25px; border: 10px solid #F5B780; border-radius: 5px;">
+            <div style="font-family: bold, sans-serif; text-align: justify; line-height: 1.6; color: #333; background-color: #fff3e0; padding: 25px; border-radius: 5px;">
                 <h2 style="color: #50c878;">¡Hola, ${name}!</h2>
-                <div style="padding: 35px; border: dashed #F2A359; border-radius: 30px;">
+                <div style="padding: 35px; background-color: #fff8e1; border-radius: 30px;">
                     <p style="font-size: 18px;">
                         Hemos recibido tu solicitud para restablecer la contraseña de tu cuenta en <strong>BienesRaices_230499</strong>. Si no fuiste tú quien hizo la solicitud, por favor ignora este mensaje.
                     </p>
-                    <div style="text-align: center; background: #F1FBFA; border: 1px solid #000000; padding: 15px;">
-                        <p style="font-size: 20px;">
+                    <div style="text-align: center; background: #FF7F32; padding: 15px;">
+                        <p style="font-size: 20px; color: #fff;">
                             Haz clic en el siguiente enlace para restablecer tu contraseña:
                         </p>
                         <div style="text-align: center; margin: 20px 0;">
-                            <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/confirm/${token}" 
-                               style="background-color: #F2A359; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+                            <a href="${process.env.BACKEND_DOMAIN}:${process.env.PORT ?? 3000}/auth/passwordRecovery/${token}" 
+                               style="background-color: #FF5722; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
                                Restablecer Contraseña
                             </a>
                         </div>
