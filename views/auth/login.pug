@@ -6,10 +6,18 @@ block contenido
         h1.text-center.text-4xl.my-10.font-extrabold.text-rojo-400 Bienes
             span.font-normal.text-black Raices
         h2.text-center.font-extrabold.text-2xl= page
+        if errors
+            div.max-w-md.mx-auto.my-10
+                each error in errors
+                    if error.msg
+                        div.bg-rojo.text-white.p-4.rounded-md.flex.items-center.justify-between.mb-2
+                            p.text-sm.font-bold= error.msg
+                            button.ml-2.bg-transparent.border-0.text-white(onclick="this.parentElement.style.display='none'") &times;
 
         .mt-8.mx-auto.max-w-md
             .bg-white.py-8.px-4.shadow
-                form(action="").space-y-5.px-6
+                form(method="POST" action="/auth/login").space-y-5.px-6
+                    input(type="hidden" name="_csrf" value= csrfToken)
                     div    
                         label.block.text-sm.uppercase.text-gray-600.mb-2.font-hold Correo electronico:
                         input#email.w-full.px-3.py-2.border.border-gray3.rounded-xl.placeholder.gray-400(type="email" placeholder="ej. usuario@dominio.com" name="correo_usuario")  
@@ -20,3 +28,9 @@ block contenido
                         a.text-gray-500.text-xs(href="/auth/createAccount" class="hover:underline decoration-2 hover:decoration-red-600") ¿Aun no tienes cuenta? Registrate
                         a.text-gray-500.text-xs(href="/auth/passwordRecovery" class="hover:underline decoration-2 hover:decoration-red-600") Olvide mi contraseña
                     input(class="w-full bg-naranja-700 hover:bg-naranja-200 text-white font-bold py-3 cursor-pointer" type="submit" value="Iniciar sesion")
+        script.
+            document.querySelectorAll('.bg-rojo').forEach(error => {
+                setTimeout(() => {
+                    error.style.display = 'none';
+                }, 7000); 
+            });
