@@ -4,9 +4,11 @@
 import express from 'express';
 import generalRoutes from './routes/generalRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import propiedades from './routes/propiedades.js';
 import db from './db/config.js';
 import csrf from 'csurf'
 import cookieParser from 'cookie-parser';
+
 
 //const express = require('express'); //DECLARANDO UN OBJETO QUE VA A PERMITIR LEER PAGINAS ETC.importar la libreria para crear un servidor web
 
@@ -45,6 +47,7 @@ app.use('/auth/', userRoutes);
 app.set('view engine','pug')
 app.set('views','./views')//se define donde tendrá el proyecto las vistas
 //auth -> auntentificación
+app.use('/properties', propiedades);
 
 //CONFIGURAMOS NUESTRO SERVIDOR WEB (puerto donde estara escuchando nuestro sitio web)
 const port = process.env.PORT ||3000;

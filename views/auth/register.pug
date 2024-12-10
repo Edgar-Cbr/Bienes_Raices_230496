@@ -20,8 +20,6 @@ block contenido
                             i(class="fas fa-key mr-2")  
                         else if error.msg == "El Password debe ser de al menos 8 caracteres"
                             i(class="fas fa-lock mr-2") 
-                        else if error.msg == "La fecha no puede estar vacía"
-                            i(class="fas fa-calendar-alt mr-2") 
                         else if error.msg == "Debes tener al menos 18 años para registrarte."
                             i(class="fas fa-exclamation-triangle mr-2") 
                         else if error.msg == "Fecha inválida o edad insuficiente."
@@ -43,8 +41,6 @@ block contenido
                     div
                         label.block.text-sm.uppercase.text-gray-600.mb-2.font-bold Fecha de nacimiento:
                         input#date.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="date" name="fecha_usuario" value=User && User.date || "" )
-                        if errors && errors.some(error => error.param === 'fecha_usuario')
-                            div(class="text-rojo-400 text-sm mt-1")= errors.find(error => error.param === 'fecha_usuario').msg
                         if errors && errors.some(error => error.param === 'fecha_usuario')
                             i(class="fas fa-calendar-alt text-rojo-400 ml-2")
                     
