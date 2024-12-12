@@ -40,7 +40,7 @@ block contenido
                     
                     div
                         label.block.text-sm.uppercase.text-gray-600.mb-2.font-bold Fecha de nacimiento:
-                        input#date.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="date" name="fecha_usuario" value=User && User.date || "" )
+                        input#date.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="date" name="fecha_nacimiento" value=User && User.date || "" )
                         if errors && errors.some(error => error.param === 'fecha_usuario')
                             i(class="fas fa-calendar-alt text-rojo-400 ml-2")
                     
